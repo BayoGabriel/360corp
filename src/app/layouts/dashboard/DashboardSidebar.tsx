@@ -26,7 +26,10 @@ export function DashboardSidebar({
       <nav className={styles.nav}>
         <ul className={styles.navList}>
           {DASHBOARD_NAV_ITEMS.map((item) => {
-            const isActive = item.href === activeHref
+            const isActive =
+              activeHref !== undefined &&
+              (item.href === activeHref ||
+                activeHref.startsWith(`${item.href}/`))
             const linkClass = isActive
               ? `${styles.navLink} ${styles.navLinkActive}`
               : styles.navLink

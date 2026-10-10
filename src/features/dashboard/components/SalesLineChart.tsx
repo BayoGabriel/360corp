@@ -4,7 +4,7 @@ import {
   SALES_REPORT_COPY,
   SALES_SERIES,
 } from '../dashboard-content'
-import { areaPath, smoothPath, toChartPoints } from '../utils/sales-chart'
+import { areaPath, smoothPath, toChartPoints } from '../../../shared/lib/chart'
 import styles from './DashboardPage.module.css'
 
 const VIEW_WIDTH = 640

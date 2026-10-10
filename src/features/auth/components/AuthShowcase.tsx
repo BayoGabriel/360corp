@@ -1,20 +1,18 @@
+import loginLogo from '../../../assets/loginlogo.svg'
 import { SiteLogo } from '../../../shared/components/SiteLogo/SiteLogo'
 import { AUTH_FOOTER_LINKS, AUTH_SHOWCASE_COPY } from '../auth-content'
 import styles from './LoginPage.module.css'
+import loginImage from '../../../assets/homeimage.svg'
+            
 
-interface AuthShowcaseProps {
-  imageSrc: string
-  imageAlt: string
-}
-
-export function AuthShowcase({ imageSrc, imageAlt }: AuthShowcaseProps) {
+export function AuthShowcase() {
   return (
     <div className={styles.showcase}>
-      <SiteLogo tone="dark" />
+      <SiteLogo tone="dark" markSrc={loginLogo} />
       <img
         className={styles.showcaseImage}
-        src={imageSrc}
-        alt={imageAlt}
+        src={loginImage}
+        alt="Auth showcase image"
         width="420"
         height="300"
       />

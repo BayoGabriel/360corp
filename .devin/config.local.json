@@ -8,7 +8,9 @@
       "Exec(npx eslint)",
       "Exec(rm)",
       "Exec(curl)",
-      "Exec(head)"
+      "Exec(head)",
+      "Exec(rmdir)",
+      "Exec(python)"
     ]
   }
 }

@@ -13,7 +13,7 @@ import { PublicLayout } from './layouts/PublicLayout'
 function App() {
   const pathname = window.location.pathname
   const isDashboardArea = DASHBOARD_NAV_ITEMS.some(
-    (item) => item.href === pathname,
+    (item) => item.href === pathname || pathname.startsWith(`${item.href}/`),
   )
 
   if (pathname === '/login') {

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import homeLogo from '../../../assets/homelogo.svg'
 import { SiteLogo } from '../../../shared/components/SiteLogo/SiteLogo'
 import { MobileNavMenu } from './MobileNavMenu'
 import { SITE_AUTH_LINKS, SITE_NAV_ITEMS } from './nav-links'
@@ -28,7 +29,7 @@ export function SiteNavbar({ activeHref = '/' }: SiteNavbarProps) {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <SiteLogo />
+        <SiteLogo markSrc={homeLogo} />
         <nav className={styles.desktopNav} aria-label="Primary">
           <ul>
             {SITE_NAV_ITEMS.map((item) => (

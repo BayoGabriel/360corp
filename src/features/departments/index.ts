@@ -1,0 +1,5 @@
+export { DepartmentDetailPage } from './components/DepartmentDetailPage'
+export { DepartmentsPage } from './components/DepartmentsPage'
+export { EmployeeProfilePage } from './components/EmployeeProfilePage'
+export { EmployeesPage } from './components/EmployeesPage'
+export { TrainingsPage } from './components/TrainingsPage'

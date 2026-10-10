@@ -18,6 +18,7 @@
   width: 36px;
   height: 36px;
   display: block;
+  object-fit: contain;
 }
 
 .logoText {

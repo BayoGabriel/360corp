@@ -18,9 +18,7 @@ export function toChartPoints(
   const step = scale.plotWidth / Math.max(values.length - 1, 1)
   return values.map((value, index) => ({
     x: scale.offsetX + index * step,
-    y:
-      scale.offsetY +
-      (1 - value / scale.maxValue) * scale.plotHeight,
+    y: scale.offsetY + (1 - value / scale.maxValue) * scale.plotHeight,
   }))
 }
 
