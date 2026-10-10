@@ -1,9 +1,13 @@
+import { useCallback, useState } from 'react'
+import type { MoreActionFeedback } from '../departments-content'
 import {
   EMPLOYEE_PROFILE,
   PROFILE_COPY,
   PROFILE_STATS,
 } from '../departments-content'
 import { AttendanceCard } from './AttendanceCard'
+import { MoreActionDialog } from './MoreActionDialog'
+import { NoticeToast } from './NoticeToast'
 import { PageHeader } from './PageHeader'
 import { PerformanceCard } from './PerformanceCard'
 import { ProfileStatCard } from './ProfileStatCard'
@@ -17,10 +21,23 @@ interface EmployeeProfilePageProps {
   departmentId: string
 }
 
+interface NoticeState {
+  variant: MoreActionFeedback
+  key: number
+}
+
 export function EmployeeProfilePage({
   departmentId,
 }: EmployeeProfilePageProps) {
   const backHref = `/departments/${departmentId}/employees`
+  const [dialogOpen, setDialogOpen] = useState(false)
+  const [notice, setNotice] = useState<NoticeState | null>(null)
+  const dismissNotice = useCallback(() => setNotice(null), [])
+
+  const onMoreAction = (feedback: MoreActionFeedback) => {
+    setDialogOpen(false)
+    setNotice({ variant: feedback, key: Date.now() })
+  }
 
   return (
     <div className={styles.page}>
@@ -29,7 +46,11 @@ export function EmployeeProfilePage({
         backHref={backHref}
         backLabel="Back to employees"
       >
-        <button type="button" className={styles.createButton}>
+        <button
+          type="button"
+          className={styles.createButton}
+          onClick={() => setDialogOpen(true)}
+        >
           {PROFILE_COPY.moreActionLabel}
         </button>
       </PageHeader>
@@ -58,6 +79,19 @@ export function EmployeeProfilePage({
           <StaffDetails profile={EMPLOYEE_PROFILE} />
         </aside>
       </div>
+      {dialogOpen && (
+        <MoreActionDialog
+          onClose={() => setDialogOpen(false)}
+          onAction={onMoreAction}
+        />
+      )}
+      {notice && (
+        <NoticeToast
+          key={notice.key}
+          variant={notice.variant}
+          onDismiss={dismissNotice}
+        />
+      )}
     </div>
   )
 }

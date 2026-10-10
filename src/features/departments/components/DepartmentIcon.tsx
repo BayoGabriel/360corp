@@ -158,6 +158,37 @@ const ICON_PATHS: Record<DepartmentIconName, ReactNode> = {
       <path d="M9 15.5l2 2 4-4.5" />
     </>
   ),
+  'complaints-employee': (
+    <>
+      <circle cx="9" cy="9" r="3" />
+      <path d="M4.5 19.5a4.5 4.5 0 0 1 9 0" />
+      <circle cx="17" cy="7" r="4" />
+      <path d="M17 5.2v2.5M17 9.5v.2" />
+    </>
+  ),
+  'complaints-general': (
+    <>
+      <path d="M7 3h10a1 1 0 0 1 1 1v11M7 3a1 1 0 0 0-1 1v15a1 1 0 0 0 1 1h5" />
+      <path d="M9 7.5h6M9 10.5h6" />
+      <path d="M14.5 21.5v-6.5l4.8 3.2-1.9.5z" />
+    </>
+  ),
+  'request-sent': (
+    <>
+      <circle cx="9" cy="9" r="3" />
+      <path d="M4.5 19.5a4.5 4.5 0 0 1 9 0" />
+      <circle cx="17" cy="7" r="4.5" />
+      <path d="M17 9.2V5.3M15.5 6.8L17 5.3l1.5 1.5" />
+    </>
+  ),
+  'request-received': (
+    <>
+      <circle cx="9" cy="9" r="3" />
+      <path d="M4.5 19.5a4.5 4.5 0 0 1 9 0" />
+      <circle cx="17" cy="7" r="4.5" />
+      <path d="M17 4.8v3.9M15.5 7.2L17 8.7l1.5-1.5" />
+    </>
+  ),
 }
 
 interface DepartmentIconProps {

@@ -62,6 +62,7 @@
 .createButton {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   padding: 9px 18px;
   border: 0;
   border-radius: 6px;
@@ -76,6 +77,11 @@
 
 .createButton:hover {
   background: var(--color-nav-cta-hover);
+}
+
+.createButtonIcon {
+  width: 13px;
+  height: 13px;
 }
 
 /* Module / department cards */
@@ -412,12 +418,38 @@
   background: #34a853;
 }
 
+.rowActionReply {
+  background: var(--color-nav-accent);
+}
+
 .rowActionEdit {
   background: var(--color-nav-cta);
 }
 
 .rowActionDelete {
   background: var(--color-accent-red);
+}
+
+/* Query + salary tables */
+.descriptionCell {
+  max-width: 300px;
+  white-space: normal;
+  line-height: 1.5;
+  font-size: 12px;
+}
+
+.queryStatusReply {
+  color: var(--color-nav-cta);
+  font-weight: 600;
+}
+
+.queryStatusUnreply {
+  color: var(--color-accent-red);
+  font-weight: 600;
+}
+
+.salaryCell {
+  font-weight: 600;
 }
 
 /* Avatar stack */
@@ -451,6 +483,24 @@
   justify-content: center;
   font-size: 9px;
   font-weight: 700;
+}
+
+/* Staff selection table (add staff to training) */
+.checkCell {
+  width: 42px;
+}
+
+.rowCheck {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: var(--color-nav-cta);
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.rowActionAdd {
+  background: var(--color-nav-cta);
 }
 
 /* Pagination */
@@ -1088,6 +1138,206 @@
   }
 }
 
+/* More action dialog */
+.dialogBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  padding: 48px 16px;
+  background: rgba(20, 18, 45, 0.45);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.dialog {
+  width: min(460px, 100%);
+  padding: 16px 20px 8px;
+  border-radius: 12px;
+  background: var(--color-page-bg);
+  box-shadow: 0 18px 60px rgba(20, 18, 45, 0.3);
+}
+
+.dialogHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(55, 52, 63, 0.1);
+}
+
+.dialogTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.dialogClose {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: rgba(55, 52, 63, 0.55);
+  cursor: pointer;
+}
+
+.dialogClose:hover {
+  background: rgba(55, 52, 63, 0.08);
+  color: var(--color-heading);
+}
+
+.dialogClose svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.actionSection {
+  padding: 16px 0 18px;
+}
+
+.actionSection + .actionSection {
+  border-top: 1px solid rgba(55, 52, 63, 0.1);
+}
+
+.actionTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.actionIcon {
+  width: 22px;
+  height: 22px;
+  color: var(--color-nav-cta);
+  flex-shrink: 0;
+}
+
+.actionTitle {
+  margin: 0;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--color-nav-cta);
+}
+
+.actionText {
+  margin: 10px 0 14px;
+  font-size: 12px;
+  line-height: 1.65;
+  color: rgba(55, 52, 63, 0.65);
+}
+
+.actionButton {
+  padding: 9px 18px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--color-nav-cta);
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.actionButton:hover {
+  background: var(--color-nav-cta-hover);
+}
+
+/* Notice toast */
+.notice {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 70;
+  width: min(440px, calc(100% - 36px));
+  display: flex;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: 4px;
+  border-top: 4px solid transparent;
+  background: var(--color-page-bg);
+  box-shadow: 0 10px 30px rgba(20, 18, 45, 0.18);
+  animation: noticeIn 0.18s ease-out;
+}
+
+@keyframes noticeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.noticeSuccess {
+  border-top-color: #34a853;
+}
+
+.noticeError {
+  border-top-color: var(--color-accent-red);
+}
+
+.noticeIcon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.noticeSuccess .noticeIcon {
+  stroke: #34a853;
+}
+
+.noticeError .noticeIcon {
+  stroke: var(--color-accent-red);
+}
+
+.noticeError .noticeIcon circle[r='1'],
+.noticeError .noticeIcon circle[r='0.7'] {
+  fill: var(--color-accent-red);
+  stroke: none;
+}
+
+.noticeBody {
+  min-width: 0;
+}
+
+.noticeTitle {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.noticeSuccess .noticeTitle {
+  color: #34a853;
+}
+
+.noticeError .noticeTitle {
+  color: var(--color-accent-red);
+}
+
+.noticeText {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(55, 52, 63, 0.7);
+}
+
 @media (max-width: 560px) {
   .cardGrid {
     grid-template-columns: 1fr;
@@ -1130,5 +1380,15 @@
 
   .attendanceStats {
     gap: 8px;
+  }
+
+  .dialogBackdrop {
+    padding: 24px 12px;
+  }
+
+  .notice {
+    top: 12px;
+    right: 12px;
+    width: calc(100% - 24px);
   }
 }

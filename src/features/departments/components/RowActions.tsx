@@ -1,16 +1,18 @@
-import { ROW_ACTIONS_COPY } from '../departments-content'
+import { QUERY_ACTIONS_COPY, ROW_ACTIONS_COPY } from '../departments-content'
 import styles from './DepartmentsPage.module.css'
 
 interface RowActionsProps {
   viewHref: string
   viewLabel?: string
   viewVariant?: 'view' | 'assign'
+  replyHref?: string
 }
 
 export function RowActions({
   viewHref,
   viewLabel = ROW_ACTIONS_COPY.viewLabel,
   viewVariant = 'view',
+  replyHref,
 }: RowActionsProps) {
   return (
     <div className={styles.rowActions}>
@@ -31,6 +33,17 @@ export function RowActions({
           </svg>
         )}
       </a>
+      {replyHref && (
+        <a
+          className={`${styles.rowAction} ${styles.rowActionReply}`}
+          href={replyHref}
+          aria-label={QUERY_ACTIONS_COPY.replyLabel}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M9 8l-4 4 4 4M5 12h10a4 4 0 0 0 4-4V5.5" />
+          </svg>
+        </a>
+      )}
       <button
         type="button"
         className={`${styles.rowAction} ${styles.rowActionEdit}`}

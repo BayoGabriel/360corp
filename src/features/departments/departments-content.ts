@@ -23,6 +23,10 @@ export type DepartmentIconName =
   | 'policy'
   | 'exits'
   | 'schedule'
+  | 'complaints-employee'
+  | 'complaints-general'
+  | 'request-sent'
+  | 'request-received'
 
 export interface DepartmentHead {
   name: string
@@ -407,6 +411,23 @@ export const TRAININGS_PAGINATION: RecordsPagination = {
   currentPage: 1,
 }
 
+/* Add staff to training */
+
+export const ADD_STAFF_COPY = {
+  title: 'Add Staff',
+  backLabel: 'Back to trainings',
+  addLabel: 'Add Staff',
+  selectAllLabel: 'Select all staff',
+  addSelectedLabel: 'Add selected staff to training',
+} as const
+
+export const ADD_STAFF_FILTERS: FilterSelect[] = [
+  BRANCH_FILTER,
+  DEPARTMENT_FILTER,
+  JOB_TYPE_FILTER,
+  ENTRIES_FILTER,
+]
+
 export const ROW_ACTIONS_COPY = {
   viewLabel: 'View record',
   editLabel: 'Edit record',
@@ -419,6 +440,301 @@ export const PROFILE_COPY = {
   moreActionLabel: 'More Action',
   titleSuffix: 'Profile',
 } as const
+
+export const MORE_ACTION_COPY = {
+  heading: 'More Action',
+  closeLabel: 'Close more actions',
+} as const
+
+export type MoreActionFeedback = 'success' | 'error'
+
+export interface MoreAction {
+  id: string
+  title: string
+  description: string
+  buttonLabel: string
+  icon: 'redeploy' | 'shield-check'
+  feedback: MoreActionFeedback
+}
+
+const MORE_ACTION_BODY =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac urna sit vel ultricies sit feugiat proin tortor. consectetur adipiscing elit. Sed ac urna sit vel ultricies sit feugiat proin torto'
+
+export const MORE_ACTIONS: MoreAction[] = [
+  {
+    id: 'redeploy',
+    title: 'Redeploy Employee',
+    description: MORE_ACTION_BODY,
+    buttonLabel: 'Redeploy Employee',
+    icon: 'redeploy',
+    feedback: 'success',
+  },
+  {
+    id: 'head-branch',
+    title: 'Head Of Branch',
+    description: MORE_ACTION_BODY,
+    buttonLabel: 'Assign Employee',
+    icon: 'shield-check',
+    feedback: 'error',
+  },
+  {
+    id: 'head-department',
+    title: 'Head Of Department',
+    description: MORE_ACTION_BODY,
+    buttonLabel: 'Assign Employee',
+    icon: 'shield-check',
+    feedback: 'success',
+  },
+]
+
+export const NOTICE_COPY = {
+  success: {
+    title: 'Success !',
+    text: 'Lorem ipsum dolor sit amet. Sed ac urna sit vel ultricies sit feugiat proin tortor. consectetur adipiscing elit.',
+  },
+  error: {
+    title: 'Error !',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac urna sit vel ultricies sit feugiat proin tortor. consectetur adipiscing elit.consectetur adipiscing elit.',
+  },
+} as const
+
+/* Query list */
+
+export const QUERY_COPY = {
+  title: 'Query',
+  backLabel: 'Back to department',
+  createLabel: 'Create Query',
+} as const
+
+export const QUERY_FILTERS: FilterSelect[] = [ENTRIES_FILTER]
+
+export type QueryStatus = 'reply' | 'unreply'
+
+export const QUERY_STATUS_COPY: Record<QueryStatus, string> = {
+  reply: 'Reply',
+  unreply: 'Unreply',
+}
+
+export interface QueryPerson {
+  name: string
+  avatarSrc: string
+}
+
+export interface QueryRecord {
+  id: string
+  title: string
+  description: string
+  person: QueryPerson
+  timeline: string
+  status: QueryStatus
+}
+
+const queryPerson = (name: string): QueryPerson => ({
+  name,
+  avatarSrc: personAvatar,
+})
+
+const QUERY_DESCRIPTION =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh amet dui et a. Ullamcorper tincidunt vestibulum felis...'
+
+const query = (
+  id: string,
+  title: string,
+  personName: string,
+  timeline: string,
+  status: QueryStatus,
+): QueryRecord => ({
+  id,
+  title,
+  description: QUERY_DESCRIPTION,
+  person: queryPerson(personName),
+  timeline,
+  status,
+})
+
+export const QUERY_RECORDS: QueryRecord[] = [
+  query('lateness', 'Lateness', 'Beauty Uchenna', '7 Days', 'reply'),
+  query('stealing', 'Stealing', 'Janeth Ayobami', '4 Days', 'unreply'),
+  query('dirty-language', 'Dirty Language', 'Ajala Sodiq', '7 Days', 'unreply'),
+  query('damages', 'Damages', 'Florence philip', '7 Days', 'reply'),
+  query('stealing-2', 'Stealing', 'Bamgboshe Uye', '4 Days', 'unreply'),
+  query('wrong-files', 'Wrong Files', 'Tunmise Alabi', '10 Days', 'reply'),
+  query('wrong-files-2', 'Wrong Files', 'Ajao Kabiru', '10 Days', 'reply'),
+]
+
+export const QUERY_ACTIONS_COPY = {
+  replyLabel: 'Reply to query',
+} as const
+
+/* Salary structure */
+
+export const SALARY_STRUCTURE_COPY = {
+  title: 'Salary Structure',
+  backLabel: 'Back to department',
+} as const
+
+const POSITION_FILTER: FilterSelect = {
+  id: 'position',
+  label: 'Position',
+  options: [
+    'All Positions',
+    'Senior Officer',
+    'Frontend Developer',
+    'Product Designer',
+    'Field Marketers',
+    'Security Officer',
+    'Project Managers',
+    'Branding Officers',
+    'Chief Director',
+    'Senior Engineer',
+    'AI Engineers',
+  ],
+}
+
+export const SALARY_STRUCTURE_FILTERS: FilterSelect[] = [
+  BRANCH_FILTER,
+  DEPARTMENT_FILTER,
+  POSITION_FILTER,
+  ENTRIES_FILTER,
+]
+
+export interface SalaryBand {
+  id: string
+  position: string
+  range: string
+  employeeCount: number
+}
+
+const salaryBand = (
+  id: string,
+  position: string,
+  employeeCount: number,
+): SalaryBand => ({
+  id,
+  position,
+  range: '90,000 - 150,000',
+  employeeCount,
+})
+
+export const SALARY_BANDS: SalaryBand[] = [
+  salaryBand('senior-officer', 'Senior Officer', 22),
+  salaryBand('frontend-developer', 'Frontend Developer', 35),
+  salaryBand('product-designer', 'Product Designer', 35),
+  salaryBand('field-marketers', 'Field Marketers', 92),
+  salaryBand('security-officer', 'Security Officer', 33),
+  salaryBand('project-managers', 'Project Managers', 20),
+  salaryBand('branding-officers', 'Branding Officers', 22),
+  salaryBand('chief-director', 'Chief Director', 72),
+  salaryBand('senior-engineer', 'Senior Engineer', 22),
+  salaryBand('ai-engineers', 'AI Engineers', 42),
+]
+
+export const SALARY_STRUCTURE_PAGINATION: RecordsPagination = {
+  start: 1,
+  end: 8,
+  total: 38,
+  currentPage: 1,
+}
+
+/* Position salaries */
+
+export const POSITION_SALARIES_COPY = {
+  titleSuffix: 'Salaries',
+  backLabel: 'Back to salary structure',
+} as const
+
+export const POSITION_SALARIES_FILTERS: FilterSelect[] = [
+  BRANCH_FILTER,
+  DEPARTMENT_FILTER,
+  JOB_TYPE_FILTER,
+  ENTRIES_FILTER,
+]
+
+export interface SalaryRecord {
+  id: string
+  name: string
+  email: string
+  phone: string
+  branch: string
+  salary: string
+  avatarSrc: string
+}
+
+const salaryRecord = (
+  id: string,
+  name: string,
+  salary: string,
+): SalaryRecord => ({
+  id,
+  name,
+  email: `${name.toLowerCase().replace(/[^a-z]/g, '')}@gmail.com`,
+  phone: '08101827364',
+  branch: 'Wuse 3, Abuja',
+  salary,
+  avatarSrc: personAvatar,
+})
+
+export const POSITION_SALARY_RECORDS: SalaryRecord[] = [
+  salaryRecord('ajala-jalingo', 'Ajala Jalingo', '150k'),
+  salaryRecord('ajayi-james', 'Ajayi James', '140k'),
+  salaryRecord('ayinta-paul', 'Ayinta Paul', '130k'),
+  salaryRecord('ololade-kelvin', 'Ololade Kelvin', '130k'),
+  salaryRecord('olowo-janet', 'Olowo Janet', '130k'),
+  salaryRecord('kenneth-paul', 'Kenneth paul', '100k'),
+  salaryRecord('johnson-mary', 'Johnson Mary', '100k'),
+  salaryRecord('adu-adaobi', 'Adu Adaobi', '100k'),
+  salaryRecord('nethan-precious', 'Nethan Precious', '90k'),
+  salaryRecord('obi-chidera', 'Obi Chidera', '90k'),
+]
+
+export const POSITION_SALARIES_PAGINATION: RecordsPagination = {
+  start: 1,
+  end: 10,
+  total: 38,
+  currentPage: 1,
+}
+
+/* Complaints + Requests hubs */
+
+export const COMPLAINTS_COPY = {
+  title: 'Complaints',
+  backLabel: 'Back to department',
+} as const
+
+export const COMPLAINT_CARDS: DepartmentModule[] = [
+  {
+    id: 'employee-complaints',
+    label: 'Employee Complaints',
+    icon: 'complaints-employee',
+    path: 'employee-complaints',
+  },
+  {
+    id: 'general-complaints',
+    label: 'General Complaints',
+    icon: 'complaints-general',
+    path: 'general-complaints',
+  },
+]
+
+export const REQUESTS_COPY = {
+  title: 'Request',
+  backLabel: 'Back to department',
+} as const
+
+export const REQUEST_CARDS: DepartmentModule[] = [
+  {
+    id: 'sent-request',
+    label: 'Sent Request',
+    icon: 'request-sent',
+    path: 'sent',
+  },
+  {
+    id: 'received-request',
+    label: 'Received Request',
+    icon: 'request-received',
+    path: 'received',
+  },
+]
 
 export interface ProfileStat {
   id: string

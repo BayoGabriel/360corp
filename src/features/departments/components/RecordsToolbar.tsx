@@ -1,4 +1,4 @@
-import type { FormEvent } from 'react'
+import type { FormEvent, ReactNode } from 'react'
 import type { FilterSelect } from '../departments-content'
 import { RECORDS_COPY } from '../departments-content'
 import styles from './DepartmentsPage.module.css'
@@ -6,9 +6,14 @@ import styles from './DepartmentsPage.module.css'
 interface RecordsToolbarProps {
   filters: FilterSelect[]
   searchId: string
+  actions?: ReactNode
 }
 
-export function RecordsToolbar({ filters, searchId }: RecordsToolbarProps) {
+export function RecordsToolbar({
+  filters,
+  searchId,
+  actions,
+}: RecordsToolbarProps) {
   const onSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
   }
@@ -64,12 +69,16 @@ export function RecordsToolbar({ filters, searchId }: RecordsToolbarProps) {
         </form>
       </div>
       <div className={styles.toolbarActions}>
-        <button type="button" className={styles.downloadButton}>
-          {RECORDS_COPY.downloadLabel}
-        </button>
-        <button type="button" className={styles.printButton}>
-          {RECORDS_COPY.printLabel}
-        </button>
+        {actions ?? (
+          <>
+            <button type="button" className={styles.downloadButton}>
+              {RECORDS_COPY.downloadLabel}
+            </button>
+            <button type="button" className={styles.printButton}>
+              {RECORDS_COPY.printLabel}
+            </button>
+          </>
+        )}
       </div>
     </div>
   )

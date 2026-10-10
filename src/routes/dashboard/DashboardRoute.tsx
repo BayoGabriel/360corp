@@ -2,10 +2,16 @@ import type { ReactNode } from 'react'
 import { DashboardLayout } from '../../app/layouts/dashboard/DashboardLayout'
 import { DashboardPage } from '../../features/dashboard'
 import {
+  AddStaffPage,
+  ComplaintsPage,
   DepartmentDetailPage,
   DepartmentsPage,
   EmployeeProfilePage,
   EmployeesPage,
+  PositionSalariesPage,
+  QueryPage,
+  RequestsPage,
+  SalaryStructurePage,
   TrainingsPage,
 } from '../../features/departments'
 import { FeedsPage } from '../../features/feeds'
@@ -30,8 +36,25 @@ export function DashboardRoute({ activeHref }: DashboardRouteProps) {
       page = <EmployeeProfilePage departmentId={departmentId} />
     } else if (section === 'employees') {
       page = <EmployeesPage departmentId={departmentId} />
+    } else if (section === 'trainings' && recordId) {
+      page = <AddStaffPage departmentId={departmentId} />
     } else if (section === 'trainings') {
       page = <TrainingsPage departmentId={departmentId} />
+    } else if (section === 'query') {
+      page = <QueryPage departmentId={departmentId} />
+    } else if (section === 'salary-structure' && recordId) {
+      page = (
+        <PositionSalariesPage
+          departmentId={departmentId}
+          positionId={recordId}
+        />
+      )
+    } else if (section === 'salary-structure') {
+      page = <SalaryStructurePage departmentId={departmentId} />
+    } else if (section === 'complaints') {
+      page = <ComplaintsPage departmentId={departmentId} />
+    } else if (section === 'requests') {
+      page = <RequestsPage departmentId={departmentId} />
     } else {
       page = <DepartmentDetailPage departmentId={departmentId} />
     }
