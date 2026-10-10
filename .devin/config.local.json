@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Exec(node)",
+      "Exec(true)",
+      "Exec(npx tsc)",
+      "Exec(ls)",
+      "Exec(npx eslint)",
+      "Exec(rm)",
+      "Exec(curl)",
+      "Exec(head)"
+    ]
+  }
+}

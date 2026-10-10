@@ -1,0 +1,258 @@
+.page {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100svh;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Showcase panel */
+.showcase {
+  order: -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 48px 20px;
+  background: var(--color-surface-muted);
+  color: var(--color-text);
+  text-align: center;
+}
+
+.showcaseImage {
+  width: min(100%, 400px);
+  height: auto;
+  margin-top: 48px;
+}
+
+.showcaseTitle {
+  margin: 36px 0 0;
+  max-width: 22ch;
+  font-size: 26px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.showcaseAccent {
+  display: block;
+  color: var(--color-nav-cta);
+}
+
+.showcaseDescription {
+  margin: 18px 0 0;
+  max-width: 46ch;
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: rgba(55, 52, 63, 0.66);
+}
+
+.showcaseDots {
+  display: flex;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.showcaseDot,
+.showcaseDotActive {
+  height: 6px;
+  border-radius: 3px;
+}
+
+.showcaseDot {
+  width: 16px;
+  background: rgba(46, 44, 94, 0.28);
+}
+
+.showcaseDotActive {
+  width: 30px;
+  background: var(--color-heading);
+}
+
+.showcaseFooter {
+  margin-top: auto;
+  padding-top: 40px;
+}
+
+.showcaseFooterList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 11.5px;
+}
+
+.showcaseFooterList li {
+  display: flex;
+  align-items: center;
+}
+
+.showcaseFooterList li + li::before {
+  content: '•';
+  margin: 0 10px;
+  color: rgba(55, 52, 63, 0.5);
+}
+
+.showcaseFooterList a {
+  color: rgba(55, 52, 63, 0.72);
+  text-decoration: none;
+}
+
+.showcaseFooterList a:hover {
+  color: var(--color-heading);
+  text-decoration: underline;
+}
+
+/* Form panel */
+.formPanel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 32px;
+  background: linear-gradient(
+    155deg,
+    var(--color-nav-bg) 0%,
+    color-mix(in srgb, var(--color-nav-bg) 62%, var(--color-nav-accent)) 100%
+  );
+}
+
+.loginCard {
+  width: min(100%, 340px);
+  padding: 30px 28px;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 18px 45px rgba(20, 18, 60, 0.25);
+}
+
+.loginTitle {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.loginSubtitle {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: rgba(55, 52, 63, 0.66);
+}
+
+.loginForm {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.loginInput {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #dcdcea;
+  border-radius: 6px;
+  font-size: 12.5px;
+  color: var(--color-text);
+  background: #ffffff;
+}
+
+.loginInput::placeholder {
+  color: rgba(55, 52, 63, 0.45);
+}
+
+.loginOptions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11.5px;
+}
+
+.rememberMe {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(55, 52, 63, 0.75);
+  cursor: pointer;
+}
+
+.rememberCheckbox {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: var(--color-nav-cta);
+}
+
+.forgotLink {
+  font-size: 11.5px;
+  color: var(--color-nav-cta);
+  text-decoration: none;
+}
+
+.forgotLink:hover {
+  color: var(--color-nav-cta-hover);
+  text-decoration: underline;
+}
+
+.loginButton {
+  margin-top: 6px;
+  padding: 11px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--color-nav-cta);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.loginButton:hover {
+  background: var(--color-nav-cta-hover);
+}
+
+.registerPrompt {
+  margin: 20px 0 0;
+  font-size: 11.5px;
+  text-align: center;
+  color: var(--color-nav-cta);
+}
+
+.registerLink {
+  color: var(--color-nav-cta);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.registerLink:hover {
+  color: var(--color-nav-cta-hover);
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase {
+    order: 0;
+    padding: 32px 24px 20px;
+  }
+
+  .showcaseImage {
+    margin-top: 32px;
+  }
+
+  .formPanel {
+    padding: 56px 24px;
+  }
+}

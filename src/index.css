@@ -1,0 +1,74 @@
+:root {
+  /* Typography */
+  --font-sans: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Brand / site navbar */
+  --color-nav-bg: #3f3d8f;
+  --color-nav-surface: #35326e;
+  --color-nav-text: #eceaf7;
+  --color-nav-text-strong: #ffffff;
+  --color-nav-accent: #8ab4e6;
+  --color-nav-cta: #5c8ed2;
+  --color-nav-cta-hover: #4d7dc0;
+  --color-nav-login-text: #2e2c5e;
+
+  /* Site footer */
+  --color-footer-bg: #2b2960;
+  --color-footer-cta: #7847e8;
+  --color-footer-cta-hover: #6838d8;
+
+  /* Dashboard chrome */
+  --color-accent-red: #f0554f;
+  --color-accent-red-hover: #de443e;
+  --color-notify: #ff5c8a;
+
+  /* Auth pages */
+  --color-auth-cta: #0f62fe;
+  --color-auth-cta-hover: #0b50dd;
+
+  /* App surfaces */
+  --color-page-bg: #ffffff;
+  --color-surface-muted: #f4f5f8;
+  --color-text: #37343f;
+  --color-heading: #2e2c5e;
+  --color-focus-ring: #8ab4e6;
+
+  /* Layout */
+  --content-max-width: 1200px;
+  --nav-height: 64px;
+
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-page-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root > * {
+  flex: 1;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}

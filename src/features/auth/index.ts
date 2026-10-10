@@ -1,0 +1,5 @@
+export { CheckMailPage } from './components/CheckMailPage'
+export { ForgotPasswordPage } from './components/ForgotPasswordPage'
+export { LoginPage } from './components/LoginPage'
+export { RegisterPage } from './components/RegisterPage'
+export { ResetPasswordPage } from './components/ResetPasswordPage'

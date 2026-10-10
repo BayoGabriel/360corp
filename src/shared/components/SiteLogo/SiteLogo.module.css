@@ -1,0 +1,28 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.toneLight {
+  color: var(--color-nav-text-strong);
+}
+
+.toneDark {
+  color: var(--color-heading);
+}
+
+.logoMark {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+.logoText {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
